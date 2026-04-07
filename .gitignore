@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.pyc
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Build / test artifacts
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Local databases / indexes / generated artifacts
+*.db
+*.sqlite3
+faiss_index/
+data/index/
+outputs/
+tmp/
+logs/
+
+# Large local data files
+*.csv
+*.parquet
+*.pkl
+*.joblib
+*.drawio
+*.docx
+
+# draw.io temp / backup files
+*.bkp
+*.dtmp
+
+
+# duplicate file
+README copy.md

@@ -1,0 +1,140 @@
+{
+  "logs": [
+    {
+      "timestamp": "2026-04-07T18:55:00Z",
+      "service": "payments",
+      "environment": "prod",
+      "severity": "ERROR",
+      "message": "Database connection timeout",
+      "host": "payments-pod-1",
+      "trace_id": "trace-3001",
+      "incident_id": "INC-6001",
+      "tags": {"team": "payments", "region": "us-east-1"}
+    },
+    {
+      "timestamp": "2026-04-07T18:55:40Z",
+      "service": "payments",
+      "environment": "prod",
+      "severity": "ERROR",
+      "message": "Retry failed for DB connection",
+      "host": "payments-pod-1",
+      "trace_id": "trace-3001",
+      "incident_id": "INC-6001",
+      "tags": {"team": "payments", "region": "us-east-1"}
+    },
+    {
+      "timestamp": "2026-04-07T18:56:10Z",
+      "service": "payments",
+      "environment": "prod",
+      "severity": "WARN",
+      "message": "Checkout request exceeded latency threshold",
+      "host": "payments-pod-1",
+      "trace_id": "trace-3001",
+      "incident_id": "INC-6001",
+      "tags": {"team": "payments", "region": "us-east-1"}
+    },
+    {
+      "timestamp": "2026-04-07T18:56:45Z",
+      "service": "payments",
+      "environment": "prod",
+      "severity": "CRITICAL",
+      "message": "Connection pool exhausted while waiting for postgres",
+      "host": "payments-pod-2",
+      "trace_id": "trace-3002",
+      "incident_id": "INC-6001",
+      "tags": {"team": "payments", "region": "us-east-1"}
+    }
+  ],
+  "metrics": [
+    {
+      "timestamp": "2026-04-07T18:45:00Z",
+      "service": "payments",
+      "environment": "prod",
+      "metric_name": "latency_ms",
+      "value": 180,
+      "unit": "ms",
+      "host": "payments-pod-1",
+      "tags": {"team": "payments"}
+    },
+    {
+      "timestamp": "2026-04-07T18:50:00Z",
+      "service": "payments",
+      "environment": "prod",
+      "metric_name": "latency_ms",
+      "value": 220,
+      "unit": "ms",
+      "host": "payments-pod-1",
+      "tags": {"team": "payments"}
+    },
+    {
+      "timestamp": "2026-04-07T18:58:00Z",
+      "service": "payments",
+      "environment": "prod",
+      "metric_name": "latency_ms",
+      "value": 1480,
+      "unit": "ms",
+      "host": "payments-pod-1",
+      "tags": {"team": "payments"}
+    },
+    {
+      "timestamp": "2026-04-07T18:45:00Z",
+      "service": "payments",
+      "environment": "prod",
+      "metric_name": "error_rate",
+      "value": 0.01,
+      "unit": "ratio",
+      "host": "payments-pod-1",
+      "tags": {"team": "payments"}
+    },
+    {
+      "timestamp": "2026-04-07T18:50:00Z",
+      "service": "payments",
+      "environment": "prod",
+      "metric_name": "error_rate",
+      "value": 0.02,
+      "unit": "ratio",
+      "host": "payments-pod-1",
+      "tags": {"team": "payments"}
+    },
+    {
+      "timestamp": "2026-04-07T18:58:00Z",
+      "service": "payments",
+      "environment": "prod",
+      "metric_name": "error_rate",
+      "value": 0.34,
+      "unit": "ratio",
+      "host": "payments-pod-1",
+      "tags": {"team": "payments"}
+    }
+  ],
+  "traces": [
+    {
+      "timestamp": "2026-04-07T18:57:20Z",
+      "service": "payments",
+      "environment": "prod",
+      "trace_id": "trace-3001",
+      "span_id": "span-1",
+      "parent_span_id": null,
+      "operation": "POST /charge",
+      "duration_ms": 1520,
+      "status": "error",
+      "error_message": "Database connection timeout",
+      "downstream_service": "postgres",
+      "tags": {"db_cluster": "payments-primary", "team": "payments"}
+    },
+    {
+      "timestamp": "2026-04-07T18:58:10Z",
+      "service": "payments",
+      "environment": "prod",
+      "trace_id": "trace-3002",
+      "span_id": "span-2",
+      "parent_span_id": null,
+      "operation": "POST /charge",
+      "duration_ms": 1690,
+      "status": "error",
+      "error_message": "Connection pool exhausted while waiting for postgres",
+      "downstream_service": "postgres",
+      "tags": {"db_cluster": "payments-primary", "team": "payments"}
+    }
+  ]
+}

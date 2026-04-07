@@ -1,0 +1,184 @@
+{
+  "logs": [
+    {
+      "timestamp": "2026-04-07T18:55:00Z",
+      "service": "checkout-service",
+      "environment": "prod",
+      "severity": "ERROR",
+      "message": "payment authorization failed",
+      "host": "checkout-01",
+      "trace_id": "trace-2001",
+      "incident_id": "INC-5902",
+      "tags": {
+        "region": "us-east-1",
+        "team": "checkout"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T18:56:00Z",
+      "service": "payment-service",
+      "environment": "prod",
+      "severity": "CRITICAL",
+      "message": "downstream bank gateway timeout",
+      "host": "payment-02",
+      "trace_id": "trace-2001",
+      "incident_id": "INC-5902",
+      "tags": {
+        "provider": "bank-gateway-a",
+        "team": "payments"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T18:56:30Z",
+      "service": "payment-service",
+      "environment": "prod",
+      "severity": "ERROR",
+      "message": "retry attempt failed for bank gateway",
+      "host": "payment-02",
+      "trace_id": "trace-2001",
+      "incident_id": "INC-5902",
+      "tags": {
+        "provider": "bank-gateway-a",
+        "team": "payments"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T18:57:00Z",
+      "service": "checkout-service",
+      "environment": "prod",
+      "severity": "WARN",
+      "message": "checkout latency exceeded SLO threshold",
+      "host": "checkout-01",
+      "trace_id": "trace-2001",
+      "incident_id": "INC-5902",
+      "tags": {
+        "region": "us-east-1",
+        "team": "checkout"
+      }
+    }
+  ],
+  "metrics": [
+    {
+      "timestamp": "2026-04-07T18:45:00Z",
+      "service": "checkout-service",
+      "environment": "prod",
+      "metric_name": "error_rate",
+      "value": 0.01,
+      "unit": "ratio",
+      "host": "checkout-01",
+      "tags": {
+        "region": "us-east-1"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T18:50:00Z",
+      "service": "checkout-service",
+      "environment": "prod",
+      "metric_name": "error_rate",
+      "value": 0.02,
+      "unit": "ratio",
+      "host": "checkout-01",
+      "tags": {
+        "region": "us-east-1"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T18:58:00Z",
+      "service": "checkout-service",
+      "environment": "prod",
+      "metric_name": "error_rate",
+      "value": 0.31,
+      "unit": "ratio",
+      "host": "checkout-01",
+      "tags": {
+        "region": "us-east-1"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T18:45:00Z",
+      "service": "payment-service",
+      "environment": "prod",
+      "metric_name": "latency_ms",
+      "value": 180,
+      "unit": "ms",
+      "host": "payment-02",
+      "tags": {
+        "provider": "bank-gateway-a"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T18:50:00Z",
+      "service": "payment-service",
+      "environment": "prod",
+      "metric_name": "latency_ms",
+      "value": 220,
+      "unit": "ms",
+      "host": "payment-02",
+      "tags": {
+        "provider": "bank-gateway-a"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T18:58:00Z",
+      "service": "payment-service",
+      "environment": "prod",
+      "metric_name": "latency_ms",
+      "value": 1520,
+      "unit": "ms",
+      "host": "payment-02",
+      "tags": {
+        "provider": "bank-gateway-a"
+      }
+    }
+  ],
+  "traces": [
+    {
+      "timestamp": "2026-04-07T18:57:10Z",
+      "service": "checkout-service",
+      "environment": "prod",
+      "trace_id": "trace-2001",
+      "span_id": "span-1",
+      "parent_span_id": null,
+      "operation": "POST /checkout",
+      "duration_ms": 2410,
+      "status": "error",
+      "error_message": "payment timeout",
+      "downstream_service": "payment-service",
+      "tags": {
+        "customer_tier": "enterprise"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T18:57:11Z",
+      "service": "payment-service",
+      "environment": "prod",
+      "trace_id": "trace-2001",
+      "span_id": "span-2",
+      "parent_span_id": "span-1",
+      "operation": "POST /authorize",
+      "duration_ms": 1810,
+      "status": "error",
+      "error_message": "bank gateway timeout",
+      "downstream_service": "bank-gateway",
+      "tags": {
+        "provider": "bank-gateway-a"
+      }
+    },
+    {
+      "timestamp": "2026-04-07T18:58:20Z",
+      "service": "payment-service",
+      "environment": "prod",
+      "trace_id": "trace-2002",
+      "span_id": "span-3",
+      "parent_span_id": null,
+      "operation": "POST /authorize",
+      "duration_ms": 1690,
+      "status": "error",
+      "error_message": "bank gateway timeout",
+      "downstream_service": "bank-gateway",
+      "tags": {
+        "provider": "bank-gateway-a"
+      }
+    }
+  ]
+}
