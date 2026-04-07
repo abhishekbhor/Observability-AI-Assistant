@@ -113,7 +113,7 @@ curl -X POST http://127.0.0.1:8000/assistant/investigate \
     "top_k": 8
   }'
 ```
-## I Example workflow
+## II Example workflow
 ### sample_telemetry_postgres_outage.json for payments/postgres
 - This one is tuned for a payments -> postgres failure scenario:
 
