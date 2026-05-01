@@ -74,3 +74,40 @@ class HealthResponse(BaseModel):
     status: str
     app_name: str
     version: str
+
+
+class SimulationRequest(BaseModel):
+    scenario: str
+    environment: str = "prod"
+    seed: int | None = None
+
+
+class EvaluationCaseResult(BaseModel):
+    question: str
+    scenario: str
+    expected_root_cause: str
+    predicted_root_cause: str | None
+    correct: bool
+    debug: dict | None = None
+
+
+class EvaluationResponse(BaseModel):
+    accuracy: float
+    total_cases: int
+    cases: list[EvaluationCaseResult]
+
+
+class InvestigationDebug(BaseModel):
+    retrieved_doc_count: int
+    snapshot_counts: dict[str, int]
+    top_ranked_candidates: list[dict] = Field(default_factory=list)
+
+
+class InvestigationResponse(BaseModel):
+    question: str
+    summary: str
+    likely_root_causes: list[str]
+    anomalies: list[dict]
+    evidence: list[dict]
+    service_map: dict[str, list[str]]
+    debug: dict | None = None

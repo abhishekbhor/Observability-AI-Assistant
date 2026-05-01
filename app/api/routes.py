@@ -1,6 +1,8 @@
-from __future__ import annotations
+# This file defines the API routes for the Observability Assistant application using FastAPI. It includes endpoints for health checks, telemetry ingestion, and investigation requests. The routes interact with the TelemetryStore for managing telemetry data and the ObservabilityAssistant for handling investigation logic.
 
-from fastapi import APIRouter, Depends
+from __future__ import annotations # This import allows for postponed evaluation of type annotations, which can help with circular imports and improve performance by avoiding the need to evaluate type annotations at runtime.
+
+from fastapi import APIRouter, Depends # APIRouter is used to create a router for defining API routes, and Depends is used for dependency injection in FastAPI.
 
 from app.core.config import settings
 from app.models.schemas import HealthResponse, InvestigationRequest, InvestigationResponse, TelemetryBatch

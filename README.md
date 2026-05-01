@@ -7,7 +7,7 @@ Unlike traditional dashboards or RAG-based assistants, this system performs stru
 
 Built as an end-to-end FastAPI application, it simulates how modern AI systems can assist SREs and engineers in debugging distributed systems.
 
-This version is intentionally portfolio-ready:
+This Assistant includes:
 - telemetry ingestion APIs for logs, metrics, and traces
 - correlation engine across services and time windows
 - anomaly detection on time-series metrics
